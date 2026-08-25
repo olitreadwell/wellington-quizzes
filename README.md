@@ -21,7 +21,9 @@ Live at: <https://olitreadwell.github.io/wellington-quizzes/>
   curated tags, and community reviews.
 - Baseline comes from the Believe it or Not find-a-quiz list
   (<https://believeitornot.co.nz/findaquiz.html>), retrieved 2026-08-25, plus
-  entries verified from venue or operator pages.
+  entries verified from venue or operator pages, plus currently listed
+  recurring quiz events from Eventfinda (Wellington Region) and venue sites
+  such as Star Group, Eva Pub, and The Old Bailey.
 - Every quiz carries its source URL and a `lastVerified` date. Schedules
   change — the site tells readers to confirm with the venue before heading out.
 
