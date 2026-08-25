@@ -12,7 +12,7 @@ import { quizListSchema, type Quiz } from '@/server/quiz-schema';
 const rawQuizzes = [
   {
     id: '1841-bar-restaurant',
-    venue: "1841 Bar Restaurant",
+    venue: '1841 Bar Restaurant',
     suburb: 'Johnsonville',
     address: '1 Disraeli Street, Johnsonville, Wellington 6037',
     area: 'Wellington City',
@@ -20,7 +20,10 @@ const rawQuizzes = [
     startTime: '19:30',
     cadence: 'weekly',
     booking: 'Walk in or book a table',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -32,7 +35,10 @@ const rawQuizzes = [
     dayOfWeek: 'Tuesday',
     startTime: '19:00',
     cadence: 'weekly',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -45,7 +51,10 @@ const rawQuizzes = [
     startTime: '18:30',
     cadence: 'weekly',
     notes: 'Political trivia favourites — MPs have been known to drop in.',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -57,7 +66,10 @@ const rawQuizzes = [
     dayOfWeek: 'Thursday',
     startTime: '19:00',
     cadence: 'weekly',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -69,8 +81,12 @@ const rawQuizzes = [
     dayOfWeek: 'Tuesday',
     startTime: '18:30',
     cadence: 'weekly',
-    notes: 'Listed by Believe it or Not; confirm the venue is still running it before planning around this one.',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    notes:
+      'Listed by Believe it or Not; confirm the venue is still running it before planning around this one.',
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -82,7 +98,10 @@ const rawQuizzes = [
     dayOfWeek: 'Wednesday',
     startTime: '19:00',
     cadence: 'weekly',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -94,7 +113,10 @@ const rawQuizzes = [
     dayOfWeek: 'Wednesday',
     startTime: '18:00',
     cadence: 'weekly',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -106,7 +128,10 @@ const rawQuizzes = [
     dayOfWeek: 'Monday',
     startTime: '19:30',
     cadence: 'weekly',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -119,7 +144,10 @@ const rawQuizzes = [
     startTime: '19:00',
     cadence: 'weekly',
     notes: 'Members clubs often ask you to sign in; phone ahead.',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -131,7 +159,10 @@ const rawQuizzes = [
     dayOfWeek: 'Tuesday',
     startTime: '19:00',
     cadence: 'weekly',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -144,7 +175,10 @@ const rawQuizzes = [
     startTime: '17:30',
     cadence: 'weekly',
     notes: 'Early start — good for an after-work team.',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -156,7 +190,10 @@ const rawQuizzes = [
     dayOfWeek: 'Wednesday',
     startTime: '19:00',
     cadence: 'weekly',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -168,12 +205,15 @@ const rawQuizzes = [
     dayOfWeek: 'Tuesday',
     startTime: '18:30',
     cadence: 'weekly',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
     id: 'gibbons-hotel',
-    venue: "Gibbons Hotel",
+    venue: 'Gibbons Hotel',
     suburb: 'Te Aro',
     address: '52 Taranaki Street, Te Aro, Wellington 6011',
     area: 'Wellington City',
@@ -194,7 +234,10 @@ const rawQuizzes = [
     dayOfWeek: 'Tuesday',
     startTime: '18:00',
     cadence: 'weekly',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -208,7 +251,10 @@ const rawQuizzes = [
     cadence: 'weekly',
     operator: 'Star Group',
     notes: 'Long-running Thursday institution on Cuba Street.',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -220,7 +266,10 @@ const rawQuizzes = [
     dayOfWeek: 'Thursday',
     startTime: '18:00',
     cadence: 'weekly',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -232,7 +281,10 @@ const rawQuizzes = [
     dayOfWeek: 'Tuesday',
     startTime: '19:00',
     cadence: 'weekly',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -244,7 +296,10 @@ const rawQuizzes = [
     dayOfWeek: 'Wednesday',
     startTime: '19:00',
     cadence: 'weekly',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -257,7 +312,10 @@ const rawQuizzes = [
     startTime: '19:00',
     cadence: 'monthly',
     cadenceNote: 'Last Tuesday of the month',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -269,7 +327,10 @@ const rawQuizzes = [
     dayOfWeek: 'Tuesday',
     startTime: '19:00',
     cadence: 'weekly',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -282,7 +343,10 @@ const rawQuizzes = [
     startTime: '19:00',
     cadence: 'monthly',
     cadenceNote: 'Fourth Thursday of the month',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -295,7 +359,10 @@ const rawQuizzes = [
     startTime: '19:30',
     cadence: 'seasonal',
     cadenceNote: 'Fortnightly, seasonal — confirm the season is on',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -307,7 +374,10 @@ const rawQuizzes = [
     dayOfWeek: 'Wednesday',
     startTime: '19:00',
     cadence: 'weekly',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -319,7 +389,10 @@ const rawQuizzes = [
     dayOfWeek: 'Wednesday',
     startTime: '18:00',
     cadence: 'weekly',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -331,7 +404,10 @@ const rawQuizzes = [
     dayOfWeek: 'Tuesday',
     startTime: '19:00',
     cadence: 'weekly',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -343,7 +419,10 @@ const rawQuizzes = [
     dayOfWeek: 'Tuesday',
     startTime: '19:00',
     cadence: 'weekly',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -355,7 +434,10 @@ const rawQuizzes = [
     dayOfWeek: 'Tuesday',
     startTime: '19:00',
     cadence: 'weekly',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -368,7 +450,10 @@ const rawQuizzes = [
     startTime: '18:00',
     cadence: 'weekly',
     notes: 'On the waterfront, close to Te Papa.',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -380,7 +465,10 @@ const rawQuizzes = [
     dayOfWeek: 'Tuesday',
     startTime: '19:00',
     cadence: 'weekly',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -392,7 +480,10 @@ const rawQuizzes = [
     dayOfWeek: 'Tuesday',
     startTime: '19:00',
     cadence: 'fortnightly',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -404,7 +495,10 @@ const rawQuizzes = [
     dayOfWeek: 'Tuesday',
     startTime: '19:00',
     cadence: 'weekly',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -416,7 +510,10 @@ const rawQuizzes = [
     dayOfWeek: 'Wednesday',
     startTime: '18:00',
     cadence: 'weekly',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -428,7 +525,10 @@ const rawQuizzes = [
     dayOfWeek: 'Wednesday',
     startTime: '18:30',
     cadence: 'weekly',
-    source: { label: 'Believe it or Not — Find a Quiz', url: 'https://believeitornot.co.nz/findaquiz.html' },
+    source: {
+      label: 'Believe it or Not — Find a Quiz',
+      url: 'https://believeitornot.co.nz/findaquiz.html',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -442,7 +542,10 @@ const rawQuizzes = [
     cadence: 'weekly',
     format: 'Grown up pub quiz',
     notes: 'Reported by r/Wellington quizzers. Confirm with the venue before planning around it.',
-    source: { label: 'r/Wellington quiz thread', url: 'https://www.reddit.com/r/Wellington/comments/830uvg/pub_quizzes/' },
+    source: {
+      label: 'r/Wellington quiz thread',
+      url: 'https://www.reddit.com/r/Wellington/comments/830uvg/pub_quizzes/',
+    },
     lastVerified: '2026-08-25',
   },
   {
@@ -456,7 +559,8 @@ const rawQuizzes = [
     cadence: 'weekly',
     operator: 'Gee Quiz',
     format: '5 rounds, 50 questions, plus bonus rounds',
-    notes: 'Gee Quiz calls this the most popular quiz in the city (25-30 teams). Confirm start time.',
+    notes:
+      'Gee Quiz calls this the most popular quiz in the city (25-30 teams). Confirm start time.',
     source: { label: 'Gee Quiz — Pub Quiz', url: 'https://www.geequiz.co.nz/pub-quiz' },
     lastVerified: '2026-08-25',
   },
