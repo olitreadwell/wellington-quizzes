@@ -8,8 +8,8 @@ describe('quiz dataset', () => {
     expect(parsed.success).toBe(true);
   });
 
-  it('has at least 50 quizzes across six areas', () => {
-    expect(quizzes.length).toBeGreaterThanOrEqual(50);
+  it('has at least 55 quizzes across six areas', () => {
+    expect(quizzes.length).toBeGreaterThanOrEqual(55);
     expect(new Set(quizzes.map((quiz) => quiz.area)).size).toBeGreaterThanOrEqual(6);
   });
 
