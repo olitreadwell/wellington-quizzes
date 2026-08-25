@@ -24,7 +24,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: '1852-pub-and-kitchen',
@@ -39,7 +39,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'backbencher-gastropub',
@@ -56,7 +56,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'bellevue-gardens-hotel',
@@ -71,7 +71,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'bethel-woods',
@@ -88,7 +88,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'borough-tawa',
@@ -103,7 +103,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'churlys-cbd',
@@ -118,7 +118,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'co-op-kitchen-bar',
@@ -133,7 +133,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'cosmopolitan-club-upper-hutt',
@@ -149,7 +149,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'dakota',
@@ -164,7 +164,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'dillingers-brasserie-bar',
@@ -181,7 +181,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'empire-est-1950',
@@ -196,7 +196,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'the-featherston',
@@ -211,7 +211,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'gibbons-hotel',
@@ -241,7 +241,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'hotel-bristol',
@@ -277,7 +277,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'khandallah-trading-company',
@@ -292,7 +292,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'naenae-hotel',
@@ -307,7 +307,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'omalleys-bar-kitchen',
@@ -324,7 +324,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'pickle-jar',
@@ -339,7 +339,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'plimmerton-boating-club',
@@ -356,7 +356,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'porirua-club',
@@ -373,7 +373,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'residence',
@@ -407,7 +407,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'shepherds-arms-hotel',
@@ -422,7 +422,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'speights-ale-house-petone',
@@ -437,7 +437,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'southern-cross',
@@ -452,7 +452,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'st-johns-bar-eatery',
@@ -469,7 +469,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'strathmore-local',
@@ -484,7 +484,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'supply-room',
@@ -500,7 +500,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'tote-furnace',
@@ -515,7 +515,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'tuatara-taproom',
@@ -530,7 +530,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'wq-hotel',
@@ -545,7 +545,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'moon-bar-newtown',
@@ -595,7 +595,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'club-vista',
@@ -610,7 +610,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'jolly-pub',
@@ -625,7 +625,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'waikanae-chartered-club',
@@ -641,7 +641,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'grill-at-solway-park',
@@ -656,7 +656,7 @@ const rawQuizzes = [
       label: 'Believe it or Not — Find a Quiz',
       url: 'https://believeitornot.co.nz/findaquiz.html',
     },
-    lastVerified: '2026-08-25',
+    lastVerified: '2026-08-26',
   },
   {
     id: 'kelburn-village-pub',
