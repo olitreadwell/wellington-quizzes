@@ -27,6 +27,13 @@ The site is a Next.js static export (`output: 'export'`,
 `basePath: '/wellington-quizzes'`) — no API routes, no server runtime, no
 Dockerfile. GitHub Pages deploys `out/` via `.github/workflows/pages.yml`.
 
+Quiz entries can carry optional detail fields (`operator`, `format`,
+`prizes`, `booking`, `teamSize`, `tags`, `reviews`) — only add a field when a
+public source supports it, and keep `tags` inside the curated vocabulary in
+`src/server/quiz-schema.ts`. Community reviews are PR-contributed and stay in
+the same file; never invent reviews or ratings. Filter, sort, and compare
+logic lives in `src/lib/quiz-filter.ts` and `src/lib/quiz-compare.ts`.
+
 ## Non-negotiables
 
 - The one-command contract is `npm run check` = format:check + lint +

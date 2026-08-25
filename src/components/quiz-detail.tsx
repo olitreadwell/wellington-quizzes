@@ -7,6 +7,16 @@ export function getMapsUrl(quiz: Quiz): string {
   return `https://www.google.com/maps/search/?api=1&query=${query}`;
 }
 
+/** Build a prefilled GitHub issue link for adding a review. */
+export function getReviewUrl(quiz: Quiz): string {
+  const title = encodeURIComponent(`Review: ${quiz.venue}`);
+  const body = encodeURIComponent(
+    `Review for **${quiz.venue}** (${quiz.dayOfWeek}s, ${formatTime(quiz.startTime)}).\n\n` +
+      `Rating (1-5): \nComment: \nDate visited: `
+  );
+  return `https://github.com/olitreadwell/wellington-quizzes/issues/new?title=${title}&body=${body}`;
+}
+
 /** Build a single-event .ics calendar download for a quiz occurrence. */
 export function getIcsUrl(quiz: Quiz, date: Date): string {
   const [hours, minutes] = quiz.startTime.split(':').map(Number);
@@ -52,9 +62,11 @@ export function QuizDetail({ quiz, date }: { quiz: Quiz; date: Date }) {
     ...(quiz.cost ? [['Cost', quiz.cost] as [string, string]] : []),
     ...(quiz.prizes ? [['Prizes', quiz.prizes] as [string, string]] : []),
     ...(quiz.format ? [['Format', quiz.format] as [string, string]] : []),
+    ...(quiz.teamSize ? [['Team size', quiz.teamSize] as [string, string]] : []),
     ...(quiz.booking ? [['Booking', quiz.booking] as [string, string]] : []),
     ...(quiz.operator ? [['Run by', quiz.operator] as [string, string]] : []),
     ...(quiz.notes ? [['Notes', quiz.notes] as [string, string]] : []),
+    ...(quiz.tags.length > 0 ? [['Best for', quiz.tags.join(', ')] as [string, string]] : []),
   ];
 
   return (
@@ -95,7 +107,36 @@ export function QuizDetail({ quiz, date }: { quiz: Quiz; date: Date }) {
         >
           Source: {quiz.source.label}
         </a>
+        <a
+          className="rounded-md border border-neutral-300 px-3 py-2 font-medium hover:bg-neutral-100"
+          href={getReviewUrl(quiz)}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Add your review
+        </a>
       </div>
+      {quiz.reviews.length > 0 ? (
+        <section>
+          <h4 className="mb-2 text-sm font-semibold">Community reviews</h4>
+          <ul className="space-y-2">
+            {quiz.reviews.map((review) => (
+              <li key={`${review.author}-${review.date}`} className="rounded-md bg-neutral-100 p-3">
+                <p className="text-sm font-medium">
+                  {review.author} · {'★'.repeat(review.rating)}
+                  <span className="text-neutral-400"> · {review.date}</span>
+                </p>
+                <p className="text-sm text-neutral-700">{review.comment}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : (
+        <p className="text-xs text-neutral-500">
+          No reviews yet. Tried this quiz? Add a one-line review and it can appear here after a
+          maintainer merges it.
+        </p>
+      )}
       <p className="text-xs text-neutral-500">
         Last verified {quiz.lastVerified}. Confirm with the venue before heading out — schedules
         change.

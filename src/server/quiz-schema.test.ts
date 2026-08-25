@@ -8,9 +8,9 @@ describe('quiz dataset', () => {
     expect(parsed.success).toBe(true);
   });
 
-  it('has at least 30 quizzes across multiple areas', () => {
-    expect(quizzes.length).toBeGreaterThanOrEqual(30);
-    expect(new Set(quizzes.map((quiz) => quiz.area)).size).toBeGreaterThanOrEqual(4);
+  it('has at least 40 quizzes across six areas', () => {
+    expect(quizzes.length).toBeGreaterThanOrEqual(40);
+    expect(new Set(quizzes.map((quiz) => quiz.area)).size).toBeGreaterThanOrEqual(6);
   });
 
   it('has unique ids and unique venue + weekday pairs', () => {
@@ -33,6 +33,13 @@ describe('quiz dataset', () => {
     for (const quiz of quizzes) {
       expect(quiz.lastVerified).toMatch(/^\d{4}-\d{2}-\d{2}$/);
       expect(quiz.source.url).toMatch(/^https?:\/\//);
+    }
+  });
+
+  it('keeps tags to the curated vocabulary', () => {
+    for (const quiz of quizzes) {
+      expect(Array.isArray(quiz.tags)).toBe(true);
+      expect(quiz.reviews).toEqual([]);
     }
   });
 });

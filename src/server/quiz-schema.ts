@@ -27,12 +27,39 @@ export const quizAreaSchema = z.enum([
   'Upper Hutt',
   'Porirua',
   'Kapiti Coast',
+  'Wairarapa',
+]);
+
+/** Curated labels used by the filter and compare views. */
+export const quizTagSchema = z.enum([
+  'biggest',
+  'big prizes',
+  'book ahead',
+  'early start',
+  'political',
+  'waterfront',
+  'seasonal',
+  'monthly',
+  'fortnightly',
+  'reported',
 ]);
 
 /** Where a quiz listing was found, so readers can verify it themselves. */
 export const quizSourceSchema = z.object({
   label: z.string().min(1),
   url: z.url(),
+});
+
+/** A community review, contributed via pull request. */
+export const quizReviewSchema = z.object({
+  /** Display name of the reviewer. */
+  author: z.string().min(1),
+  /** Star rating, 1-5. */
+  rating: z.number().int().min(1).max(5),
+  /** Short first-hand opinion of the night. */
+  comment: z.string().min(1),
+  /** ISO date the review was written. */
+  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
 });
 
 /**
@@ -72,6 +99,12 @@ export const quizSchema = z.object({
   notes: z.string().optional(),
   /** Who runs the quiz, e.g. "Believe it or Not". */
   operator: z.string().optional(),
+  /** Suggested team size, when the venue publishes one. */
+  teamSize: z.string().optional(),
+  /** Filterable labels, e.g. "big prizes". */
+  tags: z.array(quizTagSchema).default([]),
+  /** Community reviews, added via pull request. */
+  reviews: z.array(quizReviewSchema).default([]),
   /** Where this listing came from, so readers can double-check it. */
   source: quizSourceSchema,
   /** ISO date the listing was last checked. */
