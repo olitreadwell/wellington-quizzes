@@ -10,15 +10,13 @@ if [ ! -d out ]; then
   npm run build >/dev/null
 fi
 
-bash scripts/nest-pages.sh >/dev/null
-
 echo "serving out/ on port $PORT..."
 python3 -m http.server "$PORT" --bind 127.0.0.1 --directory out &
 pid=$!
 trap 'kill "$pid" 2>/dev/null || true' EXIT
 
 for _ in $(seq 1 40); do
-  if curl -fsS "$BASE/wellington-quizzes/" >/dev/null 2>&1; then
+  if curl -fsS "$BASE/" >/dev/null 2>&1; then
     break
   fi
   sleep 0.25
@@ -33,7 +31,7 @@ check() {
   echo "ok: $label"
 }
 
-check "site root status" "200" "$(curl -s -o /dev/null -w '%{http_code}' "$BASE/wellington-quizzes/")"
-check "page mentions quizzes" "Wellington Quizzes" "$(curl -s "$BASE/wellington-quizzes/" | grep -o 'Wellington Quizzes' | head -1)"
+check "site root status" "200" "$(curl -s -o /dev/null -w '%{http_code}' "$BASE/")"
+check "page mentions quizzes" "Wellington Quizzes" "$(curl -s "$BASE/" | grep -o 'Wellington Quizzes' | head -1)"
 
 echo "smoke: all green"
