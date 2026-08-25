@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Wellington Quizzes',
+  title: 'WLG NZ Quizzes',
   description:
     'Every pub quiz around Wellington on one calendar — venues, times, details, and map links.',
 };

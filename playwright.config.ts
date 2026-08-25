@@ -5,7 +5,7 @@ import { defineConfig, devices } from '@playwright/test';
 const channel =
   process.env.PLAYWRIGHT_CHANNEL ?? (process.platform === 'darwin' ? 'chrome' : undefined);
 // Overridable (E2E_PORT=3101 npm run test:e2e) if the default is taken.
-const port = Number(process.env.E2E_PORT ?? 3100);
+const port = Number(process.env.E2E_PORT ?? 3200);
 
 export default defineConfig({
   testDir: './e2e',
@@ -18,7 +18,7 @@ export default defineConfig({
   },
   webServer: {
     command: `npm run dev -- -p ${port}`,
-    url: `http://127.0.0.1:${port}/wellington-quizzes/`,
+    url: `http://127.0.0.1:${port}/wlg-nz-quizzes/`,
     reuseExistingServer: false,
     timeout: 300_000,
   },

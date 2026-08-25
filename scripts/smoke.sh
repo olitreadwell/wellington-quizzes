@@ -32,6 +32,6 @@ check() {
 }
 
 check "site root status" "200" "$(curl -s -o /dev/null -w '%{http_code}' "$BASE/")"
-check "page mentions quizzes" "Wellington Quizzes" "$(curl -s "$BASE/" | grep -o 'Wellington Quizzes' | head -1)"
+check "page mentions quizzes" "WLG NZ Quizzes" "$(curl -s "$BASE/" | grep -o 'WLG NZ Quizzes' | head -1)"
 
 echo "smoke: all green"

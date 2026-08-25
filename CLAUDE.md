@@ -4,7 +4,7 @@ Stack-specific notes for this repo.
 
 - Node 22 (`.nvmrc` is the source of truth; `mise` and `asdf` read it).
 - npm with a committed `package-lock.json`. Pick one package manager per repo.
-- Next.js static export (`output: 'export'`, `basePath: '/wellington-quizzes'`);
+- Next.js static export (`output: 'export'`, `basePath: '/wlg-nz-quizzes'`);
   no API routes, no server runtime. Deployed by `.github/workflows/pages.yml`.
 - Vitest coverage gates live in `vitest.config.ts` (v8, 80% lines).
 - Playwright config in `playwright.config.ts`; specs in `e2e/`.

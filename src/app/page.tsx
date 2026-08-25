@@ -18,7 +18,7 @@ export default function HomePage() {
   return (
     <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
       <header className="mb-6 space-y-2">
-        <h1 className="text-3xl font-semibold sm:text-4xl">Wellington Quizzes</h1>
+        <h1 className="text-3xl font-semibold sm:text-4xl">WLG NZ Quizzes</h1>
         <p className="max-w-2xl text-neutral-600">
           {quizzes.length} recurring pub quizzes across {suburbCount} suburbs — every week (and some
           less often), on one calendar. Tap a quiz for details, map link, and an add-to- calendar

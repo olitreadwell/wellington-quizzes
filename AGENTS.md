@@ -24,7 +24,7 @@ point `source` at where the listing was found. The dataset tests
 (`src/server/quiz-schema.test.ts`) enforce uniqueness and shape.
 
 The site is a Next.js static export (`output: 'export'`,
-`basePath: '/wellington-quizzes'`) — no API routes, no server runtime, no
+`basePath: '/wlg-nz-quizzes'`) — no API routes, no server runtime, no
 Dockerfile. GitHub Pages deploys `out/` via `.github/workflows/pages.yml`.
 
 Quiz entries can carry optional detail fields (`operator`, `format`,

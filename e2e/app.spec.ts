@@ -1,20 +1,20 @@
 import { expect, test } from '@playwright/test';
 
 test('homepage renders the quiz calendar', async ({ page }) => {
-  await page.goto('/wellington-quizzes/');
-  await expect(page.getByRole('heading', { name: 'Wellington Quizzes' })).toBeVisible();
+  await page.goto('/wlg-nz-quizzes/');
+  await expect(page.getByRole('heading', { name: 'WLG NZ Quizzes' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'All quizzes by day' })).toBeVisible();
   await expect(page.getByRole('button', { name: /Gibbons Hotel/ }).first()).toBeVisible();
 });
 
 test('day filter narrows the by-day listing', async ({ page }) => {
-  await page.goto('/wellington-quizzes/');
+  await page.goto('/wlg-nz-quizzes/');
   await page.getByRole('button', { name: 'Thursday', exact: true }).click();
   await expect(page.getByRole('button', { name: /Hotel Bristol/ }).first()).toBeVisible();
 });
 
 test('opening a quiz shows its details', async ({ page }) => {
-  await page.goto('/wellington-quizzes/');
+  await page.goto('/wlg-nz-quizzes/');
   await page
     .getByRole('button', { name: /Gibbons Hotel/ })
     .first()
@@ -26,14 +26,14 @@ test('opening a quiz shows its details', async ({ page }) => {
 });
 
 test('search narrows the by-day listing', async ({ page }) => {
-  await page.goto('/wellington-quizzes/');
+  await page.goto('/wlg-nz-quizzes/');
   await page.getByLabel('Search quizzes').fill('Petone');
   await expect(page.getByRole('button', { name: /Speight's Ale House/ }).first()).toBeVisible();
   await expect(page.getByRole('button', { name: /Gibbons Hotel/ })).toHaveCount(0);
 });
 
 test('compare shows selected quizzes side by side', async ({ page }) => {
-  await page.goto('/wellington-quizzes/');
+  await page.goto('/wlg-nz-quizzes/');
   await page.getByRole('checkbox', { name: 'Compare Hotel Bristol' }).check();
   await page.getByRole('checkbox', { name: 'Compare Southern Cross' }).check();
   await page.getByRole('button', { name: 'Compare' }).click();
@@ -43,7 +43,7 @@ test('compare shows selected quizzes side by side', async ({ page }) => {
 });
 
 test('detail sheet links to add a review', async ({ page }) => {
-  await page.goto('/wellington-quizzes/');
+  await page.goto('/wlg-nz-quizzes/');
   await page
     .getByRole('button', { name: /Hotel Bristol/ })
     .first()

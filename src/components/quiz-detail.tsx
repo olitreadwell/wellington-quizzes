@@ -14,7 +14,7 @@ export function getReviewUrl(quiz: Quiz): string {
     `Review for **${quiz.venue}** (${quiz.dayOfWeek}s, ${formatTime(quiz.startTime)}).\n\n` +
       `Rating (1-5): \nComment: \nDate visited: `
   );
-  return `https://github.com/olitreadwell/wellington-quizzes/issues/new?title=${title}&body=${body}`;
+  return `https://github.com/olitreadwell/wlg-nz-quizzes/issues/new?title=${title}&body=${body}`;
 }
 
 /** Build a single-event .ics calendar download for a quiz occurrence. */
@@ -31,9 +31,9 @@ export function getIcsUrl(quiz: Quiz, date: Date): string {
   const ics = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//Wellington Quizzes//EN',
+    'PRODID:-//WLG NZ Quizzes//EN',
     'BEGIN:VEVENT',
-    `UID:${quiz.id}-${stamp(start)}@wellington-quizzes`,
+    `UID:${quiz.id}-${stamp(start)}@wlg-nz-quizzes`,
     `DTSTAMP:${stamp(new Date())}`,
     `DTSTART:${stamp(start)}`,
     `DTEND:${stamp(end)}`,

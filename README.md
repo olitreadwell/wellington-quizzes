@@ -1,7 +1,7 @@
-# Wellington Quizzes
+# WLG NZ Quizzes
 
-[![CI](https://github.com/olitreadwell/wellington-quizzes/actions/workflows/ci.yml/badge.svg)](https://github.com/olitreadwell/wellington-quizzes/actions/workflows/ci.yml)
-[![Site](https://github.com/olitreadwell/wellington-quizzes/actions/workflows/pages.yml/badge.svg)](https://github.com/olitreadwell/wellington-quizzes/actions/workflows/pages.yml)
+[![CI](https://github.com/olitreadwell/wlg-nz-quizzes/actions/workflows/ci.yml/badge.svg)](https://github.com/olitreadwell/wlg-nz-quizzes/actions/workflows/ci.yml)
+[![Site](https://github.com/olitreadwell/wlg-nz-quizzes/actions/workflows/pages.yml/badge.svg)](https://github.com/olitreadwell/wlg-nz-quizzes/actions/workflows/pages.yml)
 
 Every pub quiz around Wellington on one calendar. Venues, start times, and
 details for recurring quiz nights across Wellington City, the Hutt Valley,
@@ -11,7 +11,7 @@ add-to-calendar file for each one.
 Filter by area, day, schedule, or tag; search by venue or suburb; compare up
 to five quizzes side by side; and leave a review for a quiz you have tried.
 
-Live at: <https://olitreadwell.github.io/wellington-quizzes/>
+Live at: <https://olitreadwell.github.io/wlg-nz-quizzes/>
 
 ## Data
 
@@ -44,7 +44,7 @@ quiz detail sheet.
 
 | Command | Purpose |
 | --- | --- |
-| `npm run dev` | Dev server at http://localhost:3000/wellington-quizzes |
+| `npm run dev` | Dev server at http://localhost:3000/wlg-nz-quizzes |
 | `npm run build` | Static export to `out/` |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run lint` | ESLint |
@@ -64,7 +64,7 @@ Pages by [`.github/workflows/pages.yml`](.github/workflows/pages.yml) on every
 push to `main`. Pages must be enabled once in repo settings (Settings → Pages
 → Build and deployment → Source: GitHub Actions).
 
-The site runs under the `/wellington-quizzes/` base path (see
+The site runs under the `/wlg-nz-quizzes/` base path (see
 `next.config.ts`), matching its GitHub Pages project URL.
 
 ## Stack
