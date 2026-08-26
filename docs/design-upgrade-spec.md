@@ -44,3 +44,21 @@ marketing-page redesign.
   e2e, links).
 - New axe test on `QuizDetail` passes with zero violations (axe on the full
   calendar DOM is too slow under coverage instrumentation).
+
+## Pass 2 (high-end-visual-design)
+
+Applied 2026-08-26 after loading `high-end-visual-design`:
+
+- Editorial-luxury language: cream `stone` base, `Fraunces` display headings,
+  film-grain overlay (fixed, `pointer-events-none`).
+- Double-bezel section shells (outer ring + nested inner radius) on the
+  featured banner, calendar, and full list.
+- Eyebrow tags above headings; pill navigation and CTA buttons with
+  magnetic hover (`hover:-translate-y-0.5`).
+- Scroll-entry reveals via `Reveal` (IntersectionObserver, transform/opacity
+  only, staggered delays, disabled under `prefers-reduced-motion`).
+- Premium easing `cubic-bezier(0.32, 0.72, 0, 1)` on all transitions.
+- `Reveal` falls back to instant visibility without IntersectionObserver
+  (jsdom tests, old browsers).
+
+No new dependencies; e2e, axe, and coverage all green.

@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { QuizCompareDialog } from '@/components/quiz-compare-dialog';
 import { QuizDetail } from '@/components/quiz-detail';
+import { Reveal } from '@/components/reveal';
 import { quizzes } from '@/data/quizzes';
 import { getQuizOfTheDay } from '@/lib/quiz-of-the-day';
 import {
@@ -198,7 +199,7 @@ export function QuizCalendar() {
             type="button"
             onClick={pickRandomQuiz}
             disabled={visibleQuizzes.length === 0}
-            className="rounded-md bg-amber-500 px-3 py-1.5 text-sm font-semibold text-amber-950 hover:bg-amber-400 disabled:opacity-50"
+            className="rounded-full bg-amber-500 px-5 py-2 text-sm font-semibold text-amber-950 hover:-translate-y-0.5 hover:bg-amber-400 disabled:opacity-50"
           >
             {pickLabel ? `Picking… ${pickLabel}` : 'Pick my quiz'}
           </button>
@@ -234,177 +235,200 @@ export function QuizCalendar() {
         ) : null}
       </section>
 
-      <section className="rounded-xl border border-amber-200 bg-amber-50 p-4">
-        <div className="flex items-center justify-between gap-3">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-amber-700">
-              Quiz of the day
-            </p>
-            <p className="mt-1 text-sm font-medium text-amber-900">
-              {featured.venue} · {featured.suburb}
-            </p>
-          </div>
-          <button
-            type="button"
-            aria-label="Open quiz of the day"
-            onClick={() => openQuiz(featured)}
-            className="rounded-md border border-amber-300 bg-white px-3 py-1.5 text-sm font-medium text-amber-900 hover:bg-amber-100"
-          >
-            Open
-          </button>
-        </div>
-      </section>
-
-      <section className="rounded-xl border border-stone-200 bg-white p-4">
-        <div className="mb-4 flex items-center justify-between gap-2">
-          <h2 className="font-display text-lg font-semibold tracking-tight">
-            {MONTH_NAMES[viewMonth]} {viewYear}
-          </h2>
-          <div className="flex gap-2">
-            <button
-              type="button"
-              onClick={goToToday}
-              className="rounded-md border border-stone-300 px-3 py-1 text-sm hover:bg-stone-100"
-            >
-              Today
-            </button>
-            <button
-              type="button"
-              aria-label="Previous month"
-              onClick={() => shiftMonth(-1)}
-              className="rounded-md border border-stone-300 px-3 py-1 text-sm hover:bg-stone-100"
-            >
-              ‹
-            </button>
-            <button
-              type="button"
-              aria-label="Next month"
-              onClick={() => shiftMonth(1)}
-              className="rounded-md border border-stone-300 px-3 py-1 text-sm hover:bg-stone-100"
-            >
-              ›
-            </button>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-7 gap-px overflow-hidden rounded-lg border border-stone-200 bg-stone-200">
-          {WEEKDAY_ORDER.map((day) => (
-            <div key={day} className="bg-stone-100 px-2 py-1 text-center text-xs font-semibold">
-              {day.slice(0, 2)}
+      <Reveal delayMs={80}>
+        <section className="rounded-[2rem] bg-amber-900/10 p-1.5 ring-1 ring-amber-900/10">
+          <div className="rounded-[calc(2rem-0.375rem)] bg-amber-50 px-5 py-4">
+            <div className="flex items-center justify-between gap-3">
+              <div>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-amber-700">
+                  Quiz of the day
+                </p>
+                <p className="mt-1 font-display text-base font-semibold tracking-tight text-amber-900">
+                  {featured.venue} · {featured.suburb}
+                </p>
+              </div>
+              <button
+                type="button"
+                aria-label="Open quiz of the day"
+                onClick={() => openQuiz(featured)}
+                className="rounded-full border border-amber-300 bg-white px-4 py-2 text-sm font-medium text-amber-900 hover:-translate-y-0.5 hover:bg-amber-100"
+              >
+                Open
+              </button>
             </div>
-          ))}
-          {weeks.flatMap((week, weekIndex) =>
-            week.map((date, dayIndex) => {
-              if (!date) {
-                return (
-                  <div key={`${weekIndex}-${dayIndex}`} className="min-h-24 bg-stone-50 p-1" />
-                );
-              }
-              const dayQuizzes = getQuizzesForDate(date, visibleQuizzes);
-              const isToday =
-                date.getFullYear() === today.getFullYear() &&
-                date.getMonth() === today.getMonth() &&
-                date.getDate() === today.getDate();
-              return (
-                <div key={`${weekIndex}-${dayIndex}`} className="min-h-24 space-y-1 bg-white p-1">
-                  <span
-                    className={`inline-flex h-6 w-6 items-center justify-center rounded-full text-xs ${
-                      isToday ? 'bg-stone-900 font-semibold text-white' : 'text-stone-500'
-                    }`}
-                  >
-                    {date.getDate()}
-                  </span>
-                  {dayQuizzes.map(({ quiz, date: occurrence }) => {
-                    const shorthand = getCadenceShorthand(quiz);
+          </div>
+        </section>
+      </Reveal>
+
+      <Reveal delayMs={140}>
+        <section className="rounded-[2rem] bg-stone-900/5 p-1.5 ring-1 ring-stone-900/5">
+          <div className="rounded-[calc(2rem-0.375rem)] bg-white p-4">
+            <div className="mb-4 flex items-center justify-between gap-2">
+              <div>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-stone-400">
+                  This month
+                </p>
+                <h2 className="font-display text-lg font-semibold tracking-tight">
+                  {MONTH_NAMES[viewMonth]} {viewYear}
+                </h2>
+              </div>
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={goToToday}
+                  className="rounded-full border border-stone-300 px-3 py-1 text-sm hover:-translate-y-0.5 hover:bg-stone-100"
+                >
+                  Today
+                </button>
+                <button
+                  type="button"
+                  aria-label="Previous month"
+                  onClick={() => shiftMonth(-1)}
+                  className="rounded-full border border-stone-300 px-3 py-1 text-sm hover:-translate-y-0.5 hover:bg-stone-100"
+                >
+                  ‹
+                </button>
+                <button
+                  type="button"
+                  aria-label="Next month"
+                  onClick={() => shiftMonth(1)}
+                  className="rounded-full border border-stone-300 px-3 py-1 text-sm hover:-translate-y-0.5 hover:bg-stone-100"
+                >
+                  ›
+                </button>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-7 gap-px overflow-hidden rounded-lg border border-stone-200 bg-stone-200">
+              {WEEKDAY_ORDER.map((day) => (
+                <div key={day} className="bg-stone-100 px-2 py-1 text-center text-xs font-semibold">
+                  {day.slice(0, 2)}
+                </div>
+              ))}
+              {weeks.flatMap((week, weekIndex) =>
+                week.map((date, dayIndex) => {
+                  if (!date) {
                     return (
-                      <button
-                        key={quiz.id}
-                        type="button"
-                        title={`${quiz.venue} at ${formatTime(quiz.startTime)}${
-                          shorthand ? ` (${shorthand})` : ''
-                        }`}
-                        onClick={() => setSelected({ quiz, date: occurrence })}
-                        className={`block w-full truncate rounded px-1.5 py-0.5 text-left text-xs font-medium ${
-                          shorthand
-                            ? 'bg-amber-100 text-amber-900 hover:bg-amber-200'
-                            : 'bg-stone-900 text-white hover:bg-stone-700'
+                      <div key={`${weekIndex}-${dayIndex}`} className="min-h-24 bg-stone-50 p-1" />
+                    );
+                  }
+                  const dayQuizzes = getQuizzesForDate(date, visibleQuizzes);
+                  const isToday =
+                    date.getFullYear() === today.getFullYear() &&
+                    date.getMonth() === today.getMonth() &&
+                    date.getDate() === today.getDate();
+                  return (
+                    <div
+                      key={`${weekIndex}-${dayIndex}`}
+                      className="min-h-24 space-y-1 bg-white p-1"
+                    >
+                      <span
+                        className={`inline-flex h-6 w-6 items-center justify-center rounded-full text-xs ${
+                          isToday ? 'bg-stone-900 font-semibold text-white' : 'text-stone-500'
                         }`}
                       >
-                        <span className="tabular-nums">{formatTime(quiz.startTime)}</span>{' '}
-                        {quiz.venue}
-                        {shorthand ? ` · ${shorthand}` : ''}
-                      </button>
-                    );
-                  })}
-                </div>
-              );
-            })
-          )}
-        </div>
-
-        <p className="mt-3 text-xs text-stone-500">
-          Amber chips are the once-in-a-while quizzes. Hover for the pattern, open for details.
-        </p>
-      </section>
-
-      <section className="rounded-xl border border-stone-200 bg-white p-4">
-        <h2 className="mb-3 font-display text-lg font-semibold tracking-tight">
-          All quizzes by day
-        </h2>
-        <p className="mb-3 text-sm text-stone-500">
-          {visibleQuizzes.length} of {quizzes.length} quizzes match your filters. Tick up to five to
-          compare them side by side. May the best team win.
-        </p>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {WEEKDAY_ORDER.map((day) => {
-            const dayQuizzes = visibleQuizzes.filter((quiz) => quiz.dayOfWeek === day);
-            return (
-              <div key={day}>
-                <h3 className="mb-1 text-sm font-semibold text-stone-500">{day}</h3>
-                {dayQuizzes.length === 0 ? (
-                  <p className="text-sm text-stone-400">
-                    No quizzes match. Loosen a filter, quizmaster.
-                  </p>
-                ) : (
-                  <ul className="space-y-1">
-                    {dayQuizzes.map((quiz) => {
-                      const compareSelected = compareIds.includes(quiz.id);
-                      const shorthand = getCadenceShorthand(quiz);
-                      return (
-                        <li key={quiz.id} className="flex items-start gap-2">
-                          <input
-                            type="checkbox"
-                            aria-label={`Compare ${quiz.venue}`}
-                            checked={compareSelected}
-                            onChange={() => toggleCompare(quiz.id)}
-                            className="mt-1.5"
-                          />
+                        {date.getDate()}
+                      </span>
+                      {dayQuizzes.map(({ quiz, date: occurrence }) => {
+                        const shorthand = getCadenceShorthand(quiz);
+                        return (
                           <button
+                            key={quiz.id}
                             type="button"
-                            onClick={() => openQuiz(quiz)}
-                            className="w-full rounded-md px-2 py-1 text-left text-sm hover:bg-stone-100"
+                            title={`${quiz.venue} at ${formatTime(quiz.startTime)}${
+                              shorthand ? ` (${shorthand})` : ''
+                            }`}
+                            onClick={() => setSelected({ quiz, date: occurrence })}
+                            className={`block w-full truncate rounded px-1.5 py-0.5 text-left text-xs font-medium ${
+                              shorthand
+                                ? 'bg-amber-100 text-amber-900 hover:bg-amber-200'
+                                : 'bg-stone-900 text-white hover:bg-stone-700'
+                            }`}
                           >
-                            <span className="font-medium">{formatTime(quiz.startTime)}</span>{' '}
+                            <span className="tabular-nums">{formatTime(quiz.startTime)}</span>{' '}
                             {quiz.venue}
-                            <span className="text-stone-500"> · {quiz.suburb}</span>
-                            {shorthand ? (
-                              <span className="text-amber-700"> · {shorthand}</span>
-                            ) : null}
+                            {shorthand ? ` · ${shorthand}` : ''}
                           </button>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      </section>
+                        );
+                      })}
+                    </div>
+                  );
+                })
+              )}
+            </div>
+
+            <p className="mt-3 text-xs text-stone-500">
+              Amber chips are the once-in-a-while quizzes. Hover for the pattern, open for details.
+            </p>
+          </div>
+        </section>
+      </Reveal>
+
+      <Reveal delayMs={200}>
+        <section className="rounded-[2rem] bg-stone-900/5 p-1.5 ring-1 ring-stone-900/5">
+          <div className="rounded-[calc(2rem-0.375rem)] bg-white p-4">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-stone-400">
+              The full list
+            </p>
+            <h2 className="mb-3 font-display text-lg font-semibold tracking-tight">
+              All quizzes by day
+            </h2>
+            <p className="mb-3 text-sm text-stone-500">
+              {visibleQuizzes.length} of {quizzes.length} quizzes match your filters. Tick up to
+              five to compare them side by side. May the best team win.
+            </p>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {WEEKDAY_ORDER.map((day) => {
+                const dayQuizzes = visibleQuizzes.filter((quiz) => quiz.dayOfWeek === day);
+                return (
+                  <div key={day}>
+                    <h3 className="mb-1 text-sm font-semibold text-stone-500">{day}</h3>
+                    {dayQuizzes.length === 0 ? (
+                      <p className="text-sm text-stone-400">
+                        No quizzes match. Loosen a filter, quizmaster.
+                      </p>
+                    ) : (
+                      <ul className="space-y-1">
+                        {dayQuizzes.map((quiz) => {
+                          const compareSelected = compareIds.includes(quiz.id);
+                          const shorthand = getCadenceShorthand(quiz);
+                          return (
+                            <li key={quiz.id} className="flex items-start gap-2">
+                              <input
+                                type="checkbox"
+                                aria-label={`Compare ${quiz.venue}`}
+                                checked={compareSelected}
+                                onChange={() => toggleCompare(quiz.id)}
+                                className="mt-1.5"
+                              />
+                              <button
+                                type="button"
+                                onClick={() => openQuiz(quiz)}
+                                className="w-full rounded-md px-2 py-1 text-left text-sm hover:bg-stone-100"
+                              >
+                                <span className="font-medium">{formatTime(quiz.startTime)}</span>{' '}
+                                {quiz.venue}
+                                <span className="text-stone-500"> · {quiz.suburb}</span>
+                                {shorthand ? (
+                                  <span className="text-amber-700"> · {shorthand}</span>
+                                ) : null}
+                              </button>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      </Reveal>
 
       {compareIds.length > 0 ? (
         <div className="fixed inset-x-0 bottom-4 z-40 flex justify-center px-4">
-          <div className="flex items-center gap-3 rounded-full border border-stone-200 bg-white px-4 py-2 shadow-lg">
+          <div className="flex items-center gap-3 rounded-full border border-stone-200 bg-white px-4 py-2 shadow-lg shadow-stone-900/10">
             <span className="text-sm font-medium">
               {compareIds.length} selected{compareIds.length === MAX_COMPARE ? ' (max)' : ''}
             </span>

@@ -9,8 +9,58 @@
   color-scheme: light;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   @apply bg-stone-50 text-stone-900 antialiased;
+}
+
+/* Film-grain overlay: fixed, pointer-events-none, never on scrolling content. */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Premium easing: spring-like settle, no linear or ease-in-out. */
+.ease-premium {
+  transition-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* Scroll entry: heavy fade-up with a soft blur, transform/opacity only. */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  filter: blur(4px);
+  transition:
+    opacity 800ms cubic-bezier(0.32, 0.72, 0, 1),
+    transform 800ms cubic-bezier(0.32, 0.72, 0, 1),
+    filter 800ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
 }
 
 button,
@@ -21,7 +71,7 @@ select {
     color 150ms,
     background-color 150ms,
     border-color 150ms,
-    transform 150ms;
+    transform 150ms cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 button:active:not(:disabled) {

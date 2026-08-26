@@ -1,4 +1,5 @@
 import { QuizCalendar } from '@/components/quiz-calendar';
+import { Reveal } from '@/components/reveal';
 import { quizzes } from '@/data/quizzes';
 import { WEEKDAY_ORDER } from '@/lib/quiz-utils';
 
@@ -17,8 +18,11 @@ export default function HomePage() {
 
   return (
     <main id="main" className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
-      <header className="mb-6 space-y-2">
-        <h1 className="font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
+      <header className="mb-8 space-y-3">
+        <p className="inline-flex items-center rounded-full border border-stone-300 bg-white px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-stone-500">
+          Wellington · New Zealand · Recurring only
+        </p>
+        <h1 className="font-display text-5xl font-semibold tracking-tight text-balance sm:text-6xl">
           WLG NZ Quizzes
         </h1>
         <p className="max-w-2xl text-stone-600">
@@ -30,7 +34,9 @@ export default function HomePage() {
           Last updated {LAST_UPDATED}. Schedules change; confirm with the venue before you head out.
         </p>
       </header>
-      <QuizCalendar />
+      <Reveal>
+        <QuizCalendar />
+      </Reveal>
       <footer className="mt-10 border-t border-stone-200 pt-4 text-xs text-stone-500">
         <p>
           Quiz counts by day: Mon {dayCounts[0]} · Tue {dayCounts[1]} · Wed {dayCounts[2]} · Thu{' '}

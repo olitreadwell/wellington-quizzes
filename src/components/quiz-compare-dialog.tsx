@@ -31,6 +31,9 @@ export function QuizCompareDialog({ quizzes, onClose }: { quizzes: Quiz[]; onClo
       className="w-full max-w-3xl rounded-xl p-6 backdrop:bg-black/40"
     >
       <div className="mb-4 flex items-center justify-between gap-2">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-stone-400">
+          Head to head
+        </p>
         <h2 className="font-display text-lg font-semibold tracking-tight">Compare quizzes</h2>
         <button
           type="button"

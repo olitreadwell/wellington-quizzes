@@ -72,6 +72,9 @@ export function QuizDetail({ quiz, date }: { quiz: Quiz; date: Date }) {
   return (
     <div className="space-y-4">
       <div>
+        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-amber-700">
+          Quiz night
+        </p>
         <h3 className="font-display text-xl font-semibold tracking-tight">{quiz.venue}</h3>
         <p className="text-stone-600">{quiz.address}</p>
       </div>
