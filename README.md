@@ -64,8 +64,8 @@ Pages by [`.github/workflows/pages.yml`](.github/workflows/pages.yml) on every
 push to `main`. Pages must be enabled once in repo settings (Settings → Pages
 → Build and deployment → Source: GitHub Actions).
 
-The site runs under the `/wlg-nz-quizzes/` base path (see
-`next.config.ts`), matching its GitHub Pages project URL.
+The same build deploys to Vercel: the `VERCEL` build env flips `basePath` to
+the root so the site serves from the domain apex. See `docs/deploy.md`.
 
 ## Stack
 

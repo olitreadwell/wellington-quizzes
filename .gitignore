@@ -18,3 +18,4 @@ test-results
 .pytest_cache
 .ruff_cache
 .venv
+.env*

@@ -23,9 +23,11 @@ on a calendar. The quiz dataset is the product: it lives in
 point `source` at where the listing was found. The dataset tests
 (`src/server/quiz-schema.test.ts`) enforce uniqueness and shape.
 
-The site is a Next.js static export (`output: 'export'`,
-`basePath: '/wlg-nz-quizzes'`) — no API routes, no server runtime, no
-Dockerfile. GitHub Pages deploys `out/` via `.github/workflows/pages.yml`.
+The site is a Next.js static export (`output: 'export'`) — no API routes, no
+server runtime, no Dockerfile. GitHub Pages deploys `out/` via
+`.github/workflows/pages.yml`; Vercel is wired for the same build, with
+`basePath` set to the root when the `VERCEL` env is present and
+`/wlg-nz-quizzes` otherwise (see `next.config.ts` and `docs/deploy.md`).
 
 Quiz entries can carry optional detail fields (`operator`, `format`,
 `prizes`, `booking`, `teamSize`, `tags`, `reviews`) — only add a field when a
