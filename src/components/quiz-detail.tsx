@@ -72,20 +72,20 @@ export function QuizDetail({ quiz, date }: { quiz: Quiz; date: Date }) {
   return (
     <div className="space-y-4">
       <div>
-        <h3 className="text-xl font-semibold">{quiz.venue}</h3>
-        <p className="text-neutral-600">{quiz.address}</p>
+        <h3 className="font-display text-xl font-semibold tracking-tight">{quiz.venue}</h3>
+        <p className="text-stone-600">{quiz.address}</p>
       </div>
       <dl className="grid grid-cols-[6rem_1fr] gap-x-4 gap-y-2 text-sm">
         {rows.map(([label, value]) => (
           <div key={label} className="contents">
-            <dt className="font-medium text-neutral-500">{label}</dt>
+            <dt className="font-medium text-stone-500">{label}</dt>
             <dd>{value}</dd>
           </div>
         ))}
       </dl>
       <div className="flex flex-wrap gap-2 text-sm">
         <a
-          className="rounded-md bg-neutral-900 px-3 py-2 font-medium text-white hover:bg-neutral-700"
+          className="rounded-md bg-stone-900 px-3 py-2 font-medium text-white hover:bg-stone-700"
           href={getMapsUrl(quiz)}
           target="_blank"
           rel="noreferrer"
@@ -93,14 +93,14 @@ export function QuizDetail({ quiz, date }: { quiz: Quiz; date: Date }) {
           Map
         </a>
         <a
-          className="rounded-md border border-neutral-300 px-3 py-2 font-medium hover:bg-neutral-100"
+          className="rounded-md border border-stone-300 px-3 py-2 font-medium hover:bg-stone-100"
           href={getIcsUrl(quiz, date)}
           download={`${quiz.id}.ics`}
         >
           Add to calendar
         </a>
         <a
-          className="rounded-md border border-neutral-300 px-3 py-2 font-medium hover:bg-neutral-100"
+          className="rounded-md border border-stone-300 px-3 py-2 font-medium hover:bg-stone-100"
           href={quiz.source.url}
           target="_blank"
           rel="noreferrer"
@@ -108,7 +108,7 @@ export function QuizDetail({ quiz, date }: { quiz: Quiz; date: Date }) {
           Source: {quiz.source.label}
         </a>
         <a
-          className="rounded-md border border-neutral-300 px-3 py-2 font-medium hover:bg-neutral-100"
+          className="rounded-md border border-stone-300 px-3 py-2 font-medium hover:bg-stone-100"
           href={getReviewUrl(quiz)}
           target="_blank"
           rel="noreferrer"
@@ -121,24 +121,24 @@ export function QuizDetail({ quiz, date }: { quiz: Quiz; date: Date }) {
           <h4 className="mb-2 text-sm font-semibold">Community reviews</h4>
           <ul className="space-y-2">
             {quiz.reviews.map((review) => (
-              <li key={`${review.author}-${review.date}`} className="rounded-md bg-neutral-100 p-3">
+              <li key={`${review.author}-${review.date}`} className="rounded-md bg-stone-100 p-3">
                 <p className="text-sm font-medium">
                   {review.author} · {'★'.repeat(review.rating)}
-                  <span className="text-neutral-400"> · {review.date}</span>
+                  <span className="text-stone-400"> · {review.date}</span>
                 </p>
-                <p className="text-sm text-neutral-700">{review.comment}</p>
+                <p className="text-sm text-stone-700">{review.comment}</p>
               </li>
             ))}
           </ul>
         </section>
       ) : (
-        <p className="text-xs text-neutral-500">
+        <p className="text-xs text-stone-500">
           No reviews yet. Tried this quiz? Add a one-line review and it can appear here after a
           maintainer merges it.
         </p>
       )}
-      <p className="text-xs text-neutral-500">
-        Last verified {quiz.lastVerified}. Confirm with the venue before heading out — schedules
+      <p className="text-xs text-stone-500">
+        Last verified {quiz.lastVerified}. Confirm with the venue before heading out; schedules
         change.
       </p>
     </div>

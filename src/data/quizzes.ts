@@ -50,7 +50,7 @@ const rawQuizzes = [
     dayOfWeek: 'Monday',
     startTime: '18:30',
     cadence: 'weekly',
-    notes: 'Political trivia favourites — MPs have been known to drop in.',
+    notes: 'Political trivia favourites. MPs have been known to drop in.',
     tags: ['political'],
     source: {
       label: 'Believe it or Not — Find a Quiz',
@@ -175,7 +175,7 @@ const rawQuizzes = [
     dayOfWeek: 'Tuesday',
     startTime: '17:30',
     cadence: 'weekly',
-    notes: 'Early start — good for an after-work team.',
+    notes: 'Early start, good for an after-work team.',
     tags: ['early start'],
     source: {
       label: 'Believe it or Not — Find a Quiz',
@@ -367,7 +367,7 @@ const rawQuizzes = [
     dayOfWeek: 'Wednesday',
     startTime: '19:30',
     cadence: 'seasonal',
-    cadenceNote: 'Fortnightly, seasonal — confirm the season is on',
+    cadenceNote: 'Fortnightly, seasonal; confirm the season is on',
     tags: ['seasonal'],
     source: {
       label: 'Believe it or Not — Find a Quiz',
@@ -766,7 +766,7 @@ const rawQuizzes = [
     startTime: '18:30',
     cadence: 'weekly',
     cost: 'Free admission',
-    booking: 'First in, first seated — book ahead',
+    booking: 'First in, first seated. Book ahead',
     source: {
       label: 'Eventfinda — Parrotdog Quiz Night',
       url: 'https://www.eventfinda.co.nz/2026/parrotdog-quiz-night/wellington',

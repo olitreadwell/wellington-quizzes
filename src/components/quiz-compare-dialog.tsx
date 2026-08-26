@@ -31,20 +31,20 @@ export function QuizCompareDialog({ quizzes, onClose }: { quizzes: Quiz[]; onClo
       className="w-full max-w-3xl rounded-xl p-6 backdrop:bg-black/40"
     >
       <div className="mb-4 flex items-center justify-between gap-2">
-        <h2 className="text-lg font-semibold">Compare quizzes</h2>
+        <h2 className="font-display text-lg font-semibold tracking-tight">Compare quizzes</h2>
         <button
           type="button"
           onClick={close}
-          className="rounded-md border border-neutral-300 px-3 py-1 text-sm hover:bg-neutral-100"
+          className="rounded-md border border-stone-300 px-3 py-1 text-sm hover:bg-stone-100"
         >
           Close
         </button>
       </div>
-      <div className="max-h-[70vh] overflow-auto rounded-lg border border-neutral-200">
+      <div className="max-h-[70vh] overflow-auto rounded-lg border border-stone-200">
         <table className="w-full border-collapse text-sm">
-          <thead className="sticky top-0 bg-neutral-100">
+          <thead className="sticky top-0 bg-stone-100">
             <tr>
-              <th className="px-3 py-2 text-left font-medium text-neutral-500">Attribute</th>
+              <th className="px-3 py-2 text-left font-medium text-stone-500">Attribute</th>
               {quizzes.map((quiz) => (
                 <th key={quiz.id} className="min-w-40 px-3 py-2 text-left font-semibold">
                   {quiz.venue}
@@ -54,8 +54,8 @@ export function QuizCompareDialog({ quizzes, onClose }: { quizzes: Quiz[]; onClo
           </thead>
           <tbody>
             {rows.map((row, index) => (
-              <tr key={row.label} className={index % 2 === 0 ? 'bg-white' : 'bg-neutral-50'}>
-                <td className="px-3 py-2 align-top font-medium text-neutral-500">{row.label}</td>
+              <tr key={row.label} className={index % 2 === 0 ? 'bg-white' : 'bg-stone-50'}>
+                <td className="px-3 py-2 align-top font-medium text-stone-500">{row.label}</td>
                 {row.values.map((value, column) => (
                   <td key={column} className="px-3 py-2 align-top">
                     {value}
@@ -66,7 +66,7 @@ export function QuizCompareDialog({ quizzes, onClose }: { quizzes: Quiz[]; onClo
           </tbody>
         </table>
       </div>
-      <p className="mt-3 text-xs text-neutral-500">
+      <p className="mt-3 text-xs text-stone-500">
         Compare up to five quizzes at a time. Pick from the day-by-day list or a quiz’s detail
         sheet.
       </p>

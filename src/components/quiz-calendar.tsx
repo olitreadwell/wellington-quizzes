@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { QuizCompareDialog } from '@/components/quiz-compare-dialog';
 import { QuizDetail } from '@/components/quiz-detail';
 import { quizzes } from '@/data/quizzes';
+import { getQuizOfTheDay } from '@/lib/quiz-of-the-day';
 import {
   CADENCE_OPTIONS,
   ALL_FILTERS,
@@ -63,7 +64,9 @@ export function QuizCalendar() {
   const [selected, setSelected] = useState<{ quiz: Quiz; date: Date } | null>(null);
   const [compareIds, setCompareIds] = useState<string[]>([]);
   const [compareOpen, setCompareOpen] = useState(false);
+  const [pickLabel, setPickLabel] = useState<string | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const pickTimer = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const availableTags = useMemo(() => getAvailableTags(quizzes), []);
   const visibleQuizzes = useMemo(
@@ -75,11 +78,18 @@ export function QuizCalendar() {
     [compareIds]
   );
   const weeks = useMemo(() => buildMonthGrid(viewYear, viewMonth), [viewYear, viewMonth]);
+  const featured = useMemo(() => getQuizOfTheDay(quizzes, today), [today]);
 
   useEffect(() => {
     if (!selected) return;
     dialogRef.current?.showModal();
   }, [selected]);
+
+  useEffect(() => {
+    return () => {
+      if (pickTimer.current) clearInterval(pickTimer.current);
+    };
+  }, []);
 
   const updateFilter = (key: keyof QuizFilters, value: string): void => {
     setFilters((current) => ({ ...current, [key]: value }));
@@ -111,6 +121,31 @@ export function QuizCalendar() {
     );
   };
 
+  const openQuiz = (quiz: Quiz): void => {
+    const occurrence = getQuizDatesInMonth(quiz, viewYear, viewMonth)[0] ?? today;
+    setSelected({ quiz, date: occurrence });
+  };
+
+  const pickRandomQuiz = (): void => {
+    if (visibleQuizzes.length === 0 || pickTimer.current) return;
+    const steps = 8;
+    let step = 0;
+    setPickLabel('Picking…');
+    pickTimer.current = setInterval(() => {
+      step += 1;
+      if (step >= steps) {
+        if (pickTimer.current) clearInterval(pickTimer.current);
+        pickTimer.current = null;
+        const quiz = visibleQuizzes[Math.floor(Math.random() * visibleQuizzes.length)];
+        setPickLabel(null);
+        openQuiz(quiz);
+        return;
+      }
+      const teaser = visibleQuizzes[Math.floor(Math.random() * visibleQuizzes.length)];
+      setPickLabel(teaser.venue);
+    }, 90);
+  };
+
   const filterChips = (
     items: string[],
     active: string,
@@ -125,7 +160,7 @@ export function QuizCalendar() {
         aria-pressed={active === item}
         className={`rounded-full border font-medium ${
           compact ? 'px-2 py-1 text-xs' : 'px-3 py-1 text-sm'
-        } ${active === item ? 'border-neutral-900 bg-neutral-900 text-white' : 'border-neutral-300 bg-white hover:bg-neutral-100'}`}
+        } ${active === item ? 'border-stone-900 bg-stone-900 text-white' : 'border-stone-300 bg-white hover:bg-stone-100'}`}
       >
         {item}
       </button>
@@ -144,7 +179,7 @@ export function QuizCalendar() {
             placeholder="Search venue, suburb, or area…"
             value={filters.query}
             onChange={(event) => updateFilter('query', event.target.value)}
-            className="w-full rounded-md border border-neutral-300 px-3 py-1.5 text-sm sm:w-64"
+            className="w-full rounded-md border border-stone-300 px-3 py-1.5 text-sm sm:w-64"
           />
           <label htmlFor="quiz-sort" className="sr-only">
             Sort quizzes
@@ -153,12 +188,20 @@ export function QuizCalendar() {
             id="quiz-sort"
             value={sortKey}
             onChange={(event) => setSortKey(event.target.value as 'time' | 'venue' | 'area')}
-            className="rounded-md border border-neutral-300 px-2 py-1.5 text-sm"
+            className="rounded-md border border-stone-300 px-2 py-1.5 text-sm"
           >
             <option value="time">Sort by time</option>
             <option value="venue">Sort by venue</option>
             <option value="area">Sort by area</option>
           </select>
+          <button
+            type="button"
+            onClick={pickRandomQuiz}
+            disabled={visibleQuizzes.length === 0}
+            className="rounded-md bg-amber-500 px-3 py-1.5 text-sm font-semibold text-amber-950 hover:bg-amber-400 disabled:opacity-50"
+          >
+            {pickLabel ? `Picking… ${pickLabel}` : 'Pick my quiz'}
+          </button>
         </div>
         <div className="flex flex-wrap gap-2">
           {filterChips(['All', ...AREAS], filters.area, (value) => updateFilter('area', value))}
@@ -191,16 +234,37 @@ export function QuizCalendar() {
         ) : null}
       </section>
 
-      <section className="rounded-xl border border-neutral-200 bg-white p-4">
+      <section className="rounded-xl border border-amber-200 bg-amber-50 p-4">
+        <div className="flex items-center justify-between gap-3">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wide text-amber-700">
+              Quiz of the day
+            </p>
+            <p className="mt-1 text-sm font-medium text-amber-900">
+              {featured.venue} · {featured.suburb}
+            </p>
+          </div>
+          <button
+            type="button"
+            aria-label="Open quiz of the day"
+            onClick={() => openQuiz(featured)}
+            className="rounded-md border border-amber-300 bg-white px-3 py-1.5 text-sm font-medium text-amber-900 hover:bg-amber-100"
+          >
+            Open
+          </button>
+        </div>
+      </section>
+
+      <section className="rounded-xl border border-stone-200 bg-white p-4">
         <div className="mb-4 flex items-center justify-between gap-2">
-          <h2 className="text-lg font-semibold">
+          <h2 className="font-display text-lg font-semibold tracking-tight">
             {MONTH_NAMES[viewMonth]} {viewYear}
           </h2>
           <div className="flex gap-2">
             <button
               type="button"
               onClick={goToToday}
-              className="rounded-md border border-neutral-300 px-3 py-1 text-sm hover:bg-neutral-100"
+              className="rounded-md border border-stone-300 px-3 py-1 text-sm hover:bg-stone-100"
             >
               Today
             </button>
@@ -208,7 +272,7 @@ export function QuizCalendar() {
               type="button"
               aria-label="Previous month"
               onClick={() => shiftMonth(-1)}
-              className="rounded-md border border-neutral-300 px-3 py-1 text-sm hover:bg-neutral-100"
+              className="rounded-md border border-stone-300 px-3 py-1 text-sm hover:bg-stone-100"
             >
               ‹
             </button>
@@ -216,16 +280,16 @@ export function QuizCalendar() {
               type="button"
               aria-label="Next month"
               onClick={() => shiftMonth(1)}
-              className="rounded-md border border-neutral-300 px-3 py-1 text-sm hover:bg-neutral-100"
+              className="rounded-md border border-stone-300 px-3 py-1 text-sm hover:bg-stone-100"
             >
               ›
             </button>
           </div>
         </div>
 
-        <div className="grid grid-cols-7 gap-px overflow-hidden rounded-lg border border-neutral-200 bg-neutral-200">
+        <div className="grid grid-cols-7 gap-px overflow-hidden rounded-lg border border-stone-200 bg-stone-200">
           {WEEKDAY_ORDER.map((day) => (
-            <div key={day} className="bg-neutral-100 px-2 py-1 text-center text-xs font-semibold">
+            <div key={day} className="bg-stone-100 px-2 py-1 text-center text-xs font-semibold">
               {day.slice(0, 2)}
             </div>
           ))}
@@ -233,7 +297,7 @@ export function QuizCalendar() {
             week.map((date, dayIndex) => {
               if (!date) {
                 return (
-                  <div key={`${weekIndex}-${dayIndex}`} className="min-h-24 bg-neutral-50 p-1" />
+                  <div key={`${weekIndex}-${dayIndex}`} className="min-h-24 bg-stone-50 p-1" />
                 );
               }
               const dayQuizzes = getQuizzesForDate(date, visibleQuizzes);
@@ -245,7 +309,7 @@ export function QuizCalendar() {
                 <div key={`${weekIndex}-${dayIndex}`} className="min-h-24 space-y-1 bg-white p-1">
                   <span
                     className={`inline-flex h-6 w-6 items-center justify-center rounded-full text-xs ${
-                      isToday ? 'bg-neutral-900 font-semibold text-white' : 'text-neutral-500'
+                      isToday ? 'bg-stone-900 font-semibold text-white' : 'text-stone-500'
                     }`}
                   >
                     {date.getDate()}
@@ -256,17 +320,18 @@ export function QuizCalendar() {
                       <button
                         key={quiz.id}
                         type="button"
-                        title={`${quiz.venue} — ${formatTime(quiz.startTime)}${
+                        title={`${quiz.venue} at ${formatTime(quiz.startTime)}${
                           shorthand ? ` (${shorthand})` : ''
                         }`}
                         onClick={() => setSelected({ quiz, date: occurrence })}
                         className={`block w-full truncate rounded px-1.5 py-0.5 text-left text-xs font-medium ${
                           shorthand
                             ? 'bg-amber-100 text-amber-900 hover:bg-amber-200'
-                            : 'bg-neutral-900 text-white hover:bg-neutral-700'
+                            : 'bg-stone-900 text-white hover:bg-stone-700'
                         }`}
                       >
-                        {formatTime(quiz.startTime)} {quiz.venue}
+                        <span className="tabular-nums">{formatTime(quiz.startTime)}</span>{' '}
+                        {quiz.venue}
                         {shorthand ? ` · ${shorthand}` : ''}
                       </button>
                     );
@@ -277,25 +342,29 @@ export function QuizCalendar() {
           )}
         </div>
 
-        <p className="mt-3 text-xs text-neutral-500">
-          Amber chips run less often than weekly — hover for the pattern, open for details.
+        <p className="mt-3 text-xs text-stone-500">
+          Amber chips are the once-in-a-while quizzes. Hover for the pattern, open for details.
         </p>
       </section>
 
-      <section className="rounded-xl border border-neutral-200 bg-white p-4">
-        <h2 className="mb-3 text-lg font-semibold">All quizzes by day</h2>
-        <p className="mb-3 text-sm text-neutral-500">
+      <section className="rounded-xl border border-stone-200 bg-white p-4">
+        <h2 className="mb-3 font-display text-lg font-semibold tracking-tight">
+          All quizzes by day
+        </h2>
+        <p className="mb-3 text-sm text-stone-500">
           {visibleQuizzes.length} of {quizzes.length} quizzes match your filters. Tick up to five to
-          compare them side by side.
+          compare them side by side. May the best team win.
         </p>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {WEEKDAY_ORDER.map((day) => {
             const dayQuizzes = visibleQuizzes.filter((quiz) => quiz.dayOfWeek === day);
             return (
               <div key={day}>
-                <h3 className="mb-1 text-sm font-semibold text-neutral-500">{day}</h3>
+                <h3 className="mb-1 text-sm font-semibold text-stone-500">{day}</h3>
                 {dayQuizzes.length === 0 ? (
-                  <p className="text-sm text-neutral-400">No quizzes match</p>
+                  <p className="text-sm text-stone-400">
+                    No quizzes match. Loosen a filter, quizmaster.
+                  </p>
                 ) : (
                   <ul className="space-y-1">
                     {dayQuizzes.map((quiz) => {
@@ -312,16 +381,12 @@ export function QuizCalendar() {
                           />
                           <button
                             type="button"
-                            onClick={() => {
-                              const occurrence =
-                                getQuizDatesInMonth(quiz, viewYear, viewMonth)[0] ?? today;
-                              setSelected({ quiz, date: occurrence });
-                            }}
-                            className="w-full rounded-md px-2 py-1 text-left text-sm hover:bg-neutral-100"
+                            onClick={() => openQuiz(quiz)}
+                            className="w-full rounded-md px-2 py-1 text-left text-sm hover:bg-stone-100"
                           >
                             <span className="font-medium">{formatTime(quiz.startTime)}</span>{' '}
                             {quiz.venue}
-                            <span className="text-neutral-500"> · {quiz.suburb}</span>
+                            <span className="text-stone-500"> · {quiz.suburb}</span>
                             {shorthand ? (
                               <span className="text-amber-700"> · {shorthand}</span>
                             ) : null}
@@ -339,21 +404,21 @@ export function QuizCalendar() {
 
       {compareIds.length > 0 ? (
         <div className="fixed inset-x-0 bottom-4 z-40 flex justify-center px-4">
-          <div className="flex items-center gap-3 rounded-full border border-neutral-200 bg-white px-4 py-2 shadow-lg">
+          <div className="flex items-center gap-3 rounded-full border border-stone-200 bg-white px-4 py-2 shadow-lg">
             <span className="text-sm font-medium">
               {compareIds.length} selected{compareIds.length === MAX_COMPARE ? ' (max)' : ''}
             </span>
             <button
               type="button"
               onClick={() => setCompareOpen(true)}
-              className="rounded-full bg-neutral-900 px-4 py-1.5 text-sm font-medium text-white hover:bg-neutral-700"
+              className="rounded-full bg-stone-900 px-4 py-1.5 text-sm font-medium text-white hover:bg-stone-700"
             >
               Compare
             </button>
             <button
               type="button"
               onClick={() => setCompareIds([])}
-              className="rounded-full border border-neutral-300 px-3 py-1.5 text-sm hover:bg-neutral-100"
+              className="rounded-full border border-stone-300 px-3 py-1.5 text-sm hover:bg-stone-100"
             >
               Clear
             </button>
@@ -377,14 +442,14 @@ export function QuizCalendar() {
                 disabled={
                   !compareIds.includes(selected.quiz.id) && compareIds.length >= MAX_COMPARE
                 }
-                className="flex-1 rounded-md border border-neutral-300 px-3 py-2 font-medium hover:bg-neutral-100 disabled:opacity-50"
+                className="flex-1 rounded-md border border-stone-300 px-3 py-2 font-medium hover:bg-stone-100 disabled:opacity-50"
               >
                 {compareIds.includes(selected.quiz.id) ? 'Remove from compare' : 'Add to compare'}
               </button>
               <button
                 type="button"
                 onClick={closeDialog}
-                className="flex-1 rounded-md bg-neutral-900 px-3 py-2 font-medium text-white hover:bg-neutral-700"
+                className="flex-1 rounded-md bg-stone-900 px-3 py-2 font-medium text-white hover:bg-stone-700"
               >
                 Close
               </button>
